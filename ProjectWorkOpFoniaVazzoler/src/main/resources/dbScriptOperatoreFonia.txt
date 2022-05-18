@@ -1,0 +1,53 @@
+drop table clienti;
+
+create table clienti
+(
+    id_cliente Integer not null generated always as identity ( increment 1 start 1 minvalue 1 maxvalue 2147483647 cache 1 ),
+    nome text not null,
+    cognome text not null,
+	numero_telefono Integer not null,
+	email text not null,
+	codice_fiscale text not null,
+	id_linea Integer not null,
+	constraint clienti_pkey primary key (id_cliente)
+);
+select * from clienti
+
+ALTER TABLE clienti
+ADD CONSTRAINT id_linea
+FOREIGN KEY (id_linea) REFERENCES linea_telefonica(id_linea);
+
+
+
+drop table linea_telefonica;
+
+create table linea_telefonica
+(
+    id_linea_chiamante Integer not null generated always as identity ( increment 1 start 1 minvalue 1 maxvalue 2147483647 cache 1 ),
+    id_cliente Integer not null,
+	tipo_linea text not null,
+	stato_linea text not null,
+	constraint linea_telefonica_pkey primary key (id_linea_chiamante)
+);
+select * from linea_telefonica
+
+ALTER TABLE linea_telefonica
+ADD CONSTRAINT id_cliente
+FOREIGN KEY (id_cliente) REFERENCES clienti(id_cliente);
+
+
+
+drop table chiamate;
+
+create table chiamate
+(
+    id_chiamata Integer not null generated always as identity ( increment 1 start 1 minvalue 1 maxvalue 2147483647 cache 1 ),
+    id_linea_chiamante Integer not null,
+	id_linea_chiamata Integer not null,
+    data_ora_inizio_tele timestamp with time zone not null,
+	data_ora_fine_tele timestamp with time zone not null,
+	durata bigint not null,
+	constraint chiamate_pkey primary key (id_chiamata)
+);
+select * from chiamate
+

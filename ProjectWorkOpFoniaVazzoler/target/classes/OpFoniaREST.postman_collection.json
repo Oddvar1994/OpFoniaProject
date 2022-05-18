@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "a5fb3f5c-6fd5-40e3-a098-7d2b153b701f",
+		"name": "OpFoniaREST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FoniaRestInserisciCliente",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Salvo\",\r\n    \"cognome\":\"Salmo\",\r\n    \"numeroTelefono\":3488447929,\r\n    \"email\":\"salvo.salmo@email.it\",\r\n    \"codiceFiscale\":\"slvslm80c29h501x\",\r\n    \"idLinea\":8451\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/salvacliente",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"salvacliente"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FoniaRequestModificaCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"nome\": \"Salvo\",\r\n     \"cognome\": \"Salmo\",\r\n     \"numeroTelefono\": 3488447929,\r\n      \"email\": \"salmo.salvo@email.it\",\r\n      \"codiceFiscale\": \"slvslm80c29h501x\",\r\n      \"idLinea\": 5184\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/modificacliente/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"modificacliente",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FoniaRequestVediClienti",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/clienti",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"clienti"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FoniaRequestCancellaCliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/cancellacliente/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"cancellacliente",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AttivazioneLineaTelefonica",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCliente\":\"3\",\r\n    \"tipoLinea\": \"fissa\",\r\n    \"statoLinea\":\"attivo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/attivalinea",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"attivalinea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SospensioneLineaTelefonica",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"statoLinea\":\"sospeso\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/sospendilinea/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"sospendilinea",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VediLineeTelefoniche",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/lineetelefoniche",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"lineetelefoniche"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChiudiLineaTelefonica",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/cessazionelinea/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"cessazionelinea",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NuovaChiamata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idLineaChiamante\": 5184,\r\n    \"idLineaChiamata\": 32,\r\n    \"dataOraInizioTele\" : \"2022-05-19T16:34:03.501+02:00\",\r\n    \"dataOraFineTele\" : \"2022-05-19T16:38:05.504+02:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/nuovachiamata",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"nuovachiamata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModificaChiamata",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idLineaChiamante\": 5184,\r\n    \"idLineaChiamata\": 32,\r\n    \"dataOraInizioTele\" : \"2022-05-19T16:34:03.501+02:00\",\r\n    \"dataOraFineTele\" : \"2022-05-19T16:38:05.504+02:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8087/modificachiamata/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"modificachiamata",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VediChiamate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/chiamate",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"chiamate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancellaChiamata",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/cancellachiamata/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"cancellachiamata",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DurataChiamate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "duratachiamate/5184/\"2022-05-19'T'16:34:03.300+02:00\"/\"2022-05-19'T'16:48:08.800+02:00\"",
+					"host": [
+						"duratachiamate"
+					],
+					"path": [
+						"5184",
+						"\"2022-05-19'T'16:34:03.300+02:00\"",
+						"\"2022-05-19'T'16:48:08.800+02:00\""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
