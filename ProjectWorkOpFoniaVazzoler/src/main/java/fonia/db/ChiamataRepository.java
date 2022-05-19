@@ -15,8 +15,9 @@ public interface ChiamataRepository extends CrudRepository<Chiamata, Integer>{
 	Chiamata deleteByIdChiamata(Integer idChiamata);
 	Chiamata findByIdChiamata(Integer idChiamata);
 	
-	@Query(value="SELECT SUM(durata)" + " FROM public.chiamata" +
-	" WHERE(id_linea_chiamante=:idLinea OR id_linea_chiamata=:idLinea) AND (data_ora_inizio_tele>=:dateStart AND"
-	+ " data_ora_fine_tele<=:dateEnd)", nativeQuery=true)
-	Long sommaDurate(@Param("idLinea")Integer idLinea, @Param("dateStart")Date dateStart, @Param("dateEnd")Date dateEnd);
+	@Query(value="SELECT SUM(durata)" + " FROM public.chiamate" +
+	" WHERE(id_linea_chiamante=:idLinea OR id_linea_chiamata=:idLinea) AND (data_ora_inizio_tele>=:oraInizioTele AND"
+	+ " data_ora_fine_tele<=:oraFineTele)", nativeQuery=true)
+	Long sommaDurate(@Param("idLinea")Integer idLinea,
+			@Param("oraInizioTele")Date oraInizioTele, @Param("oraFineTele")Date oraFineTele);
 }

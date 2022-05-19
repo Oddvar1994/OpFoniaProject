@@ -45,10 +45,12 @@ public class ChiamataController {
 		chiamataService.chiudiChiamata(idChiamata);
 	}
 	
-	@GetMapping("/duratachiamate/{idLinea}/{dataOraInizioTele}/{dateEnd}")
+	@GetMapping("/duratachiamate/{idLinea}/{oraInizioTele}/{oraFineTele}")
 	public Long reportChiamate(@PathVariable("idLinea")Integer IdLinea,
-	@PathVariable("dataOraInizioTele")@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")Date dataOraInizioTele,
-	@PathVariable("dataOraFineTele")@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")Date dataOraFineTele) {
-		return chiamataService.calcoloDurataTele(IdLinea, dataOraInizioTele, dataOraFineTele);
+	@PathVariable("oraInizioTele")@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")Date oraInizioTele,
+	@PathVariable("oraFineTele")@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")Date oraFineTele) {
+		System.out.println(oraInizioTele);
+		System.out.println(oraFineTele);
+		return chiamataService.calcoloDurataTele(IdLinea, oraInizioTele, oraFineTele);
 	}
 }

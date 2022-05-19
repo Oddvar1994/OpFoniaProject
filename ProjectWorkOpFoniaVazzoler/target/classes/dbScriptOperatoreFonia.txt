@@ -13,21 +13,17 @@ create table clienti
 );
 select * from clienti
 
-ALTER TABLE clienti
-ADD CONSTRAINT id_linea
-FOREIGN KEY (id_linea) REFERENCES linea_telefonica(id_linea);
-
 
 
 drop table linea_telefonica;
 
 create table linea_telefonica
 (
-    id_linea_chiamante Integer not null generated always as identity ( increment 1 start 1 minvalue 1 maxvalue 2147483647 cache 1 ),
+    id_linea Integer not null generated always as identity ( increment 1 start 1 minvalue 1 maxvalue 2147483647 cache 1 ),
     id_cliente Integer not null,
 	tipo_linea text not null,
 	stato_linea text not null,
-	constraint linea_telefonica_pkey primary key (id_linea_chiamante)
+	constraint linea_telefonica_pkey primary key (id_linea)
 );
 select * from linea_telefonica
 
@@ -51,3 +47,17 @@ create table chiamate
 );
 select * from chiamate
 
+ALTER TABLE chiamate
+add constraint id_linea_chiamante
+FOREIGN KEY (id_linea_chiamante) REFERENCES linea_telefonica(id_linea)
+MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;
+
+ALTER TABLE chiamate
+add constraint id_linea_chiamata
+FOREIGN KEY (id_linea_chiamante) REFERENCES linea_telefonica(id_linea)
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;

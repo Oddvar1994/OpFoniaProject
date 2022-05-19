@@ -35,9 +35,9 @@ public class ChiamataService {
 		chiamataRepo.delete(daChiudere);
 	}
 	
-	public Long calcoloDurataTele(Integer id, Date dateStart, Date dateEnd) {
+	public Long calcoloDurataTele(Integer id, Date oraInizioTele, Date oraFineTele) {
 		
-		return chiamataRepo.sommaDurate(id, dateStart, dateEnd);
+		return chiamataRepo.sommaDurate(id, oraInizioTele, oraFineTele);
 	}
 	
 	
